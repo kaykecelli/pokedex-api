@@ -6,11 +6,11 @@ const fastify = require('fastify')({
 })
 
 // Declare a route
-fastify.get('/pokemons', async (request, reply) => {
-    const result = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
+fastify.get('/pokemon/:name', async (request, reply) => {
+    const result = await axios.get('https://pokeapi.co/api/v2/pokemon/'+request.params.name+'')
     return { response: result.data }
   })
-  fastify.get('/locations', async (request, reply) => {
+  fastify.get('/location', async (request, reply) => {
     const result = await axios.get('https://pokeapi.co/api/v2/location/canalave-city')
     return { response: result.data }
   })
