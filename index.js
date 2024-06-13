@@ -7,7 +7,8 @@ const fastify = require('fastify')({
 
 // Declare a route
 fastify.get('/pokemon/:name', async (request, reply) => {
-  const result = await axios.get('https://pokeapi.co/api/v2/pokemon/'+request.params.name+'')
+  const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${request.params.name}`)
+  
   return { response: result.data }
 })
 
