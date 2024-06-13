@@ -7,13 +7,13 @@ const fastify = require('fastify')({
 
 // Declare a route
 fastify.get('/pokemon/:name', async (request, reply) => {
-    const result = await axios.get('https://pokeapi.co/api/v2/pokemon/'+request.params.name+'')
-    return { response: result.data }
-  })
-  fastify.get('/location', async (request, reply) => {
-    const result = await axios.get('https://pokeapi.co/api/v2/location/canalave-city')
-    return { response: result.data }
-  })
+  const result = await axios.get('https://pokeapi.co/api/v2/pokemon/'+request.params.name+'')
+  return { response: result.data }
+})
+fastify.get('/location/:name', async (request, reply) => {
+  const result = await axios.get('https://pokeapi.co/api/v2/location/'+request.params.name+'')
+  return { response: result.data }
+})
 
 // Run the server!
 const start = async () => {
